@@ -11807,6 +11807,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><ul>
+<li>$H_{0}$ Null Hypotheses: There is no difference between the Incongruent mean (μ) and Congruent mean (μ).</li>
+<li>$H_{1}$ Alternative Hypotheses: There is a difference between Incongruent and Congruent means(μ).</li>
+</ul>
+</blockquote>
 <center>$H_{0}$: $μ_{incongruent}$ - $μ_{congruent}$ = 0 </center>
 <center>$H_{1}$: $μ_{incongruent}$ - $μ_{congruent}$ ≠ 0 </center><center>alpha = 0.05</center>
 </div>
@@ -12075,7 +12080,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">);</span>
@@ -12124,7 +12129,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cong_mean</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -12176,7 +12181,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">,</span> <span class="s1">&#39;Incongruent&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">));</span>
@@ -12233,6 +12238,12 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p>Since the population size is only 24, we are going to perform a t-test. In addition, we will be using the dependent t-test(scipy's ttest_rel function) to have an accurate result because our participants were the same for both conditions.</p>
+<p>We choose the t-test under the following assumtions:</p>
+<ul>
+<li>Our data is normally distributed</li>
+<li>Our sampling is random. </li>
+<li>The differences are of measurement variables.</li>
+</ul>
 </blockquote>
 
 </div>
@@ -12240,7 +12251,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Incongruent&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Congruent&#39;</span><span class="p">])</span>
@@ -12253,7 +12264,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;T statistics score = </span><span class="si">{}</span><span class="s2"> and p-value = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">))</span>
@@ -12320,9 +12331,11 @@ According to a paper published by Washington University, there are two theories 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Reference: 
-    <a href="https://statistics.laerd.com/statistical-guides/dependent-t-test-statistical-guide.php">https://statistics.laerd.com/statistical-guides/dependent-t-test-statistical-guide.php</a>
-    <a href="https://faculty.washington.edu/chudler/words.html">https://faculty.washington.edu/chudler/words.html</a></p>
+<p>Reference:</p>
+
+<pre><code>- https://statistics.laerd.com/statistical-guides/dependent-t-test-statistical-guide.php
+- https://faculty.washington.edu/chudler/words.html
+- http://influentialpoints.com/Training/paired_t-test-principles-properties-assumptions.htm</code></pre>
 
 </div>
 </div>
